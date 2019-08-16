@@ -1,0 +1,7 @@
+{
+  "appId": "com.maykivets.productManager",
+  "appName": "product-manager",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
