@@ -4,6 +4,13 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  { path: 'product-create', loadChildren: './pages/product-create/product-create.module#ProductCreatePageModule' },
+  { path: 'product-detail', loadChildren: './pages/product-detail/product-detail.module#ProductDetailPageModule' },
+  { path: 'product-list', loadChildren: './pages/product-list/product-list.module#ProductListPageModule' },
+  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
+  { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
+  { path: 'reset-password', loadChildren: './pages/reset-password/reset-password.module#ResetPasswordPageModule' },
+  { path: 'signup', loadChildren: './pages/signup/signup.module#SignupPageModule' },
 ];
 
 @NgModule({
