@@ -1,6 +1,9 @@
 ### run
 `npm i`
 
+### to develop in a browser run
+`ionic serve`
+
 ### run
 `ionic build`
 

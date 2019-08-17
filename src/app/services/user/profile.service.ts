@@ -1,9 +1,64 @@
 import { Injectable } from '@angular/core';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
+  public userProfile: firebase.firestore.DocumentReference;
+  public currentUser: firebase.User;
 
-  constructor() { }
+  constructor() {
+    this.currentUser = firebase.auth().currentUser;
+    this.userProfile = firebase.firestore().doc(`/userProfile/${this.currentUser.uid}`);
+  }
+
+  getUserProfile(): firebase.firestore.DocumentReference {
+    return this.userProfile;
+  }
+
+  updateName(firstName: string, lastName: string): Promise<any> {
+    return this.userProfile.set({ firstName, lastName });
+  }
+
+  updateDOB(birthDate: string): Promise<any> {
+    return this.userProfile.update({ birthDate });
+  }
+
+  updateEmail(newEmail: string, password: string): Promise<any> {
+    const credential: firebase.auth.AuthCredential = this.getAuthCredential(password);
+    return this.currentUser
+      .reauthenticateWithCredential(credential)
+      .then(() => {
+        this.currentUser.updateEmail(newEmail).then(() => {
+          this.userProfile.update({ email: newEmail });
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+  private getAuthCredential(password: string) {
+    return firebase.auth.EmailAuthProvider.credential(
+      this.currentUser.email,
+      password,
+    );
+  }
+
+  updatePassword(newPassword: string, oldPassword: string): Promise<any> {
+    const credential: firebase.auth.AuthCredential = this.getAuthCredential(oldPassword);
+    return this.currentUser
+      .reauthenticateWithCredential(credential)
+      .then(() => {
+        this.currentUser.updatePassword(newPassword).then(() => {
+          console.log('Password Changed');
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
 }
