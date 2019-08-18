@@ -1,9 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>product-list</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Products</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+  <ion-list>
+    <ion-list-header> <ion-label>Your products</ion-label>
+    </ion-list-header>
+    <ion-item
+      tappable
+      *ngFor="let product of productList"
+      routerLink="/product-detail/{{ product.id }}"
+    >
+      <ion-label>
+        <h2>{{product?.name}}</h2>
+        <p>Price: <strong>${{product?.price}}</strong></p>
+        <p>Description: <strong>{{product?.description}}</strong></p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

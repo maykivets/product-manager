@@ -1,9 +1,42 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>product-create</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>New product</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+  <ion-item>
+    <ion-label position="stacked">Product Name</ion-label>
+    <ion-input
+      [(ngModel)]="productName"
+      type="text"
+      placeholder="What's your product's name?"
+    > </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Product Description</ion-label>
+    <ion-input
+      [(ngModel)]="productDescription"
+      type="text"
+      placeholder="What's your product's description?"
+    > </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Price</ion-label>
+    <ion-input
+      [(ngModel)]="productPrice"
+      type="number"
+      placeholder="How much will it cost (USD)?"
+    > </ion-input>
+  </ion-item>
+  <ion-button
+    expand="block"
+    (click)="createProduct(productName, productDescription, productPrice)"
+  >
+    Create Product
+  </ion-button>
 </ion-content>

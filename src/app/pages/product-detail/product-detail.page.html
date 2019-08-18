@@ -1,9 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>product-detail</ion-title>
+    <ion-buttons slot="start"> <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{currentProduct?.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <p>Price: <strong>${{currentProduct?.price}}</strong></p>
+      <p>Description: <strong>{{currentProduct?.description}}</strong></p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

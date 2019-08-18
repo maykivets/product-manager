@@ -5,10 +5,6 @@
     </ion-title>
 
     <ion-buttons slot="end">
-      <ion-button href="/login">
-        <ion-icon slot="icon-only" name="log-in"></ion-icon>
-      </ion-button>
-
       <ion-button routerLink="/profile">
         <ion-icon slot="icon-only" name="person"></ion-icon>
       </ion-button>
@@ -18,21 +14,16 @@
 
 <ion-content>
   <div class="ion-padding">
-    <h2>This is home page of Products.</h2>
 
-    <h4>Here you can do the following:</h4>
-    <ion-list>
-      <ion-item>
-        <ion-button href="/signup">Register</ion-button>
-      </ion-item>
+    <ion-button expand="block" color="primary" routerLink="/product-create">
+      Create a new Product
+    </ion-button>
+    <ion-button expand="block" color="primary" routerLink="/product-list">
+      See All products
+    </ion-button>
+    <ion-button expand="block" color="primary" routerLink="/product-list/{{userID}}">
+      See my products only
+    </ion-button>
 
-      <ion-item>
-        <ion-button href="/login">Login</ion-button>
-      </ion-item>
-
-      <ion-item>
-        <a routerLink="/product-list">See the products list</a>
-      </ion-item>
-    </ion-list>
   </div>
 </ion-content>
