@@ -40,6 +40,10 @@ export class ProductDetailPage implements OnInit {
       });
   }
 
+  reloadPage() {
+    this.ngOnInit();
+  }
+
   addPicture(): void {
     this.productService
       .addPicture(
@@ -48,6 +52,7 @@ export class ProductDetailPage implements OnInit {
       )
       .then(() => {
         this.productPicture = null;
+        this.reloadPage();
       });
   }
 

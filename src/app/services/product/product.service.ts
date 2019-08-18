@@ -43,7 +43,8 @@ export class ProductService {
   getPictures(productId: string): any {
     return this.productListRef
       .doc(productId)
-      .collection('pictures');
+      .collection('pictures')
+      .orderBy('createdAt', 'desc');
   }
 
   addPicture(productId: string, productPicture: string): any {
@@ -59,7 +60,8 @@ export class ProductService {
             .doc(productId)
             .collection('pictures')
             .add({
-              url: downloadURL
+              url: downloadURL,
+              createdAt: firebase.firestore.FieldValue.serverTimestamp()
             });
         });
       });
