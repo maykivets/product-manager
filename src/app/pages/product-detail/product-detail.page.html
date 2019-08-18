@@ -11,6 +11,10 @@
     <ion-card-content>
       <p>Price: <strong>${{currentProduct?.price}}</strong></p>
       <p>Description: <strong>{{currentProduct?.description}}</strong></p>
+
+      <ion-button (click)="takePicture()">
+        <ion-icon slot="icon-only" name="camera"></ion-icon>
+      </ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

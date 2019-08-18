@@ -15,7 +15,6 @@
 ionic cap add ios
 ionic cap add android
 ```
-(android added)
 (you need XCode installed on a Mac to build for iOS)
 
 ### run
