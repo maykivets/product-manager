@@ -15,6 +15,15 @@
       <ion-button (click)="takePicture()">
         <ion-icon slot="icon-only" name="camera"></ion-icon>
       </ion-button>
+      (You can take more than one picture)
+
+      <ion-list>
+        <ion-item *ngFor='let pic of pictures'>
+          <ion-img
+            [src]='pic.url'
+          ></ion-img>
+        </ion-item>
+      </ion-list>
     </ion-card-content>
   </ion-card>
 </ion-content>

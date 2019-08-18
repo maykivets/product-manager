@@ -13,6 +13,7 @@ const { Camera } = Plugins;
 })
 export class ProductDetailPage implements OnInit {
   public currentProduct: any;
+  public pictures: any;
   public productPicture: string = null;
   public productId: string;
   constructor(
@@ -27,6 +28,15 @@ export class ProductDetailPage implements OnInit {
       .get()
       .then(productSnapshot => {
         this.currentProduct = productSnapshot.data();
+        this.pictures = [];
+        this.productService
+          .getPictures(this.productId)
+          .get()
+          .then(picturesQuerySnapshot => {
+            picturesQuerySnapshot.forEach(snap => {
+              this.pictures.push(snap.data());
+            });
+          });
       });
   }
 
