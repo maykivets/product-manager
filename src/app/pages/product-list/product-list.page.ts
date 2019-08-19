@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductListPage implements OnInit {
   public productList: Array<any>;
   public withPictures = false;
+  public search = '';
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,

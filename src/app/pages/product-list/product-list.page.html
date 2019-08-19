@@ -13,11 +13,17 @@
   ></ion-toggle>
   <p class='toggle-descr'>Toggle the switch to display products with pictures</p>
 
+  <ion-input class='search'
+    placeholder='Search by name'
+    [(ngModel)]="search"
+  ></ion-input>
+
   <ion-list>
     <div *ngFor="let product of productList">
       <ion-item
         tappable
-        *ngIf='withPictures && product.hasPhoto || !withPictures'
+        *ngIf='(withPictures && product.hasPhoto || !withPictures)
+        && (search.trim() === "" || product.name.includes(search.trim()))'
         routerLink="/product-detail/{{ product.id }}"
       >
         <ion-label>
