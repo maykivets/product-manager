@@ -38,6 +38,7 @@ const routes: Routes = [
   },
   { path: 'reset-password', loadChildren: './pages/reset-password/reset-password.module#ResetPasswordPageModule' },
   { path: 'signup', loadChildren: './pages/signup/signup.module#SignupPageModule' },
+  { path: 'vegetables', loadChildren: './pages/vegetables/vegetables.module#VegetablesPageModule' },
 ];
 
 @NgModule({
