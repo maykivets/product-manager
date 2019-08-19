@@ -25,7 +25,8 @@ export class ProductService {
       name: productName,
       description: productDescription,
       price: productPrice,
-      user: firebase.auth().currentUser.uid
+      user: firebase.auth().currentUser.uid,
+      hasPhoto: false,
     });
   }
 
@@ -56,8 +57,9 @@ export class ProductService {
       .putString(productPicture, 'base64', { contentType: 'image/png' })
       .then(() => {
         return storageRef.getDownloadURL().then(downloadURL => {
-          return this.productListRef
-            .doc(productId)
+          const productDoc = this.productListRef.doc(productId);
+          productDoc.update({hasPhoto: true}).then();
+          return productDoc
             .collection('pictures')
             .add({
               url: downloadURL,

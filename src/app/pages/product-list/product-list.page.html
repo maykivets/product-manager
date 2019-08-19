@@ -1,26 +1,31 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title>Products</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-toggle
+    [(ngModel)]="withPictures"
+  ></ion-toggle>
+  <p class='toggle-descr'>Toggle the switch to display products with pictures</p>
+
   <ion-list>
-    <ion-list-header> <ion-label>Your products</ion-label>
-    </ion-list-header>
-    <ion-item
-      tappable
-      *ngFor="let product of productList"
-      routerLink="/product-detail/{{ product.id }}"
-    >
-      <ion-label>
-        <h2>{{product?.name}}</h2>
-        <p>Price: <strong>${{product?.price}}</strong></p>
-        <p>Description: <strong>{{product?.description}}</strong></p>
-      </ion-label>
-    </ion-item>
+    <div *ngFor="let product of productList">
+      <ion-item
+        tappable
+        *ngIf='withPictures && product.hasPhoto || !withPictures'
+        routerLink="/product-detail/{{ product.id }}"
+      >
+        <ion-label>
+          <h2>{{product?.name}}</h2>
+          <p>Price: <strong>${{product?.price}}</strong></p>
+          <p>Description: <strong>{{product?.description}}</strong></p>
+        </ion-label>
+      </ion-item>
+    </div>
   </ion-list>
 </ion-content>

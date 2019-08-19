@@ -9,14 +9,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductListPage implements OnInit {
   public productList: Array<any>;
+  public withPictures = false;
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
     ) { }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
     const userID: string = this.route.snapshot.paramMap.get('id');
-    console.log('userID', userID)
     this.productService
       .getProductList(userID)
       .get()
@@ -29,6 +32,7 @@ export class ProductListPage implements OnInit {
             name: data.name,
             price: data.price,
             description: data.description,
+            hasPhoto: data.hasPhoto,
           });
         });
       });
