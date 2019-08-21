@@ -28,3 +28,16 @@ to sync platforms and copy over the build to the platform respective folder
 `@ionic-native/splash-screen` 
 `@ionic-native/status-bar`
 
+### Notes:
+
+install ionic cli
+
+install cocoapods (using MacOS)
+run 
+```sudo gem install cocoapods```
+(in case of errors make sure "TLS v1.2 support" is true, see
+https://github.com/rubygems/rubygems/issues/2374#issuecomment-460178223)
+
+### in case there is no file capacitor.config.json, run once
+`ionic integrations enable capacitor`
+and edit the capacitor.config.json file (set appId to com.name.appName)
